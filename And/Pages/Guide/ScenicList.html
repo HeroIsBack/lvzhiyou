@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+	    <title>浏览器定位</title>
+	    <!-- MUI -->
+	    <script src="../../Assets/js/mui.min.js"></script>
+	    <link href="../../Assets/css/mui.min.css" rel="stylesheet"/>
+	    <!-- AMAP -->
+	    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css"/>
+	    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=ae09936750a2f6d83daae2bff0e8cd2f"></script>
+	    <!--jQuery-->
+	    <script type="text/javascript" src="../../Assets/js/jquery-1.11.3.min.js"></script>
+		<style type="text/css">
+			#main{
+				width:100%;
+				height:100%;
+			}
+			#result{
+	            border: solid 1px grey;
+	            position: absolute;
+	            background-color:white ;
+	            max-height: 100%;
+	            overflow-y: auto;
+	            right: 0;
+	            bottom: 0;
+	            width: 100%;
+	            height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+	<div id="main">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">media list（图文列表）</h1>
+		</header>
+		<div id="mapContainer"></div>
+		<div class="mui-content">
+		    <div class="title">
+				右侧带导航箭头
+			</div>
+			<ul class="mui-table-view mui-table-view-chevron">
+			</ul>
+		</div>
+	</div>
+	
+	<!--AMap-->
+	<script type="text/javascript">
+		var myMap;
+		myMap = new AMap.Map("");
+	
+		myMap.plugin(["AMap.PlaceSearch"], function() {    //构造地点查询类  
+	        var MSearch = new AMap.PlaceSearch({ 
+	            pageSize:10,
+	            pageIndex:1,
+	            city:"022" //城市
+	        });
+	        AMap.event.addListener(MSearch, "complete", function(data){
+	            var poiArr = data.poiList.pois;
+	            var lngX = poiArr[0].location.getLng();
+	            var latY = poiArr[0].location.getLat();
+	            myMap.setCenter(new AMap.LngLat(lngX, latY));
+	        });//返回地点查询结果        
+	        MSearch.search("酒店"); //关键字查询
+	    });
+	    
+	    function Render(pList, centLL){//alert(centLL);
+	    	var str = "";
+	    	for(var i=0; i<pList.length; i++){//alert(pList[i].distance);
+	    		str="<li class='mui-table-view-cell mui-media'><a class='mui-navigate-right'><img class='mui-media-object mui-pull-left' src='../../Assets/images/shuijiao.jpg'><div class='mui-media-body'>"+pList[i].name+pList[i].more+"<span class='mui-ellipsis'>"+pList[i].address+"</span><span style='text-align:right'>"+pList[i].distance+"</span></div></a></li>";
+	    		jQuery(".mui-content > ul").append(str);
+	    	}
+	    }
+	</script>
+	<!--MUI-->
+	<script>
+		mui.init({
+			swipeBack:true //启用右滑关闭功能
+			
+//			pullRefresh: {
+//				container: '#pullrefresh',
+////				down: {
+////					callback: pulldownRefresh
+////				},
+//				up: {
+//					contentrefresh: '正在加载...',
+//					callback: pullupRefresh
+//				}
+//			}
+		});
+				
+//		var count = 0;
+//		/**
+//		 * 上拉加载具体业务实现
+//		 */
+//		function pullupRefresh() {
+//			setTimeout(function() {
+//				mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
+//				var table = document.body.querySelector('.mui-table-view');
+//				var cells = document.body.querySelectorAll('.mui-table-view-cell');
+//				for (var i = cells.length, len = i + 20; i < len; i++) {
+//					var li = document.createElement('li');
+//					li.className = 'mui-table-view-cell';
+//					li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+//					table.appendChild(li);
+//				}
+//			}, 1500);
+//		}
+//		if (mui.os.plus) {
+//			mui.plusReady(function() {
+//				setTimeout(function() {
+//					mui('#pullrefresh').pullRefresh().pullupLoading();
+//				}, 1000);
+//
+//			});
+//		} else {
+//			mui.ready(function() {
+//				mui('#pullrefresh').pullRefresh().pullupLoading();
+//			});
+//		}
+	</script>
+	</body>
+</html>
