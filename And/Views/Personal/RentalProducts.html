@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<script src="../../Assets/js/jquery-1.11.3.min.js"></script>
+		<script src="../../Assets/js/mui.min.js"></script>
+		<link href="../../Assets/css/mui.min.css" rel="stylesheet" />
+		<style>
+			.mui-right {
+				float: right
+			}
+			.mui-right {
+				float: left
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="title">
+				天津 - 出租物品列表
+			</div>
+			<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell mui-media">
+							<a href="javascript:;">
+								<img class="mui-pull-left" style="height: 100px;max-width: ;" src="../../Assets/images/shuijiao.jpg">
+								<div class="mui-media-body">
+									<div class="mui-pull-left">
+										<label>防寒服</label>
+										<br />
+										<label class='mui-ellipsis'>
+											价格 :
+											<label class="mui-content-padded">20</label>元
+										</label>
+										<br />
+										<label class='mui-ellipsis'>
+											介绍 :
+											<label class="mui-content-padded">冬季保暖必备 棉袄</label>
+										</label>
+										<br />
+										<label class='mui-ellipsis'>
+											地区 :
+											<label class="mui-content-padded">天津市</label>
+										</label>
+									</div>
+									<div class="mui-pull-right">
+										<button type="button">修改</button>
+										<button type="button">下架</button>
+									</div>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" charset="utf-8" src="../../Controllers/Personal_RentalProducts.js"></script>
+	</body>
+
+</html>
