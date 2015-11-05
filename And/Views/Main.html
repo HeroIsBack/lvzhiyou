@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title>旅知游</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -18,10 +18,10 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		<!--<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 id="title" class="mui-title">旅知游</h1>
-		</header>
+		</header>-->
 		<nav class="mui-bar mui-bar-tab">
 			<a id="defaultTab" class="mui-tab-item mui-active" href="Home/index.html">
 				<span class="mui-icon mui-icon-home"></span>
@@ -31,7 +31,7 @@
 				<span class="mui-icon mui-icon-paperplane"></span>
 				<span class="mui-tab-label">旅行</span>
 			</a>
-			<a class="mui-tab-item" href="tab-webview-subpage-contact.html">
+			<a class="mui-tab-item" href="Trade/index.html">
 				<span class="mui-icon mui-icon-locked"></span>
 				<span class="mui-tab-label">装备</span>
 			</a>
@@ -48,9 +48,10 @@
 		<script type="text/javascript" charset="utf-8">
 			 //mui初始化
 			mui.init();
-			var subpages = ['Home/index.html', 'Guide/index.html', 'Guide/Round.html', 'Guide/ScenicList.html', "Setting/index.html"];
+			var subpages = ['Home/index.html', 'Guide/index.html', 'Trade/index.html', 'Guide/ScenicList.html', "Setting/index.html"];
 			var subpage_style = {
-				top: '45px',
+				//top: '45px',
+				top: '0px',
 				bottom: '51px'
 			};
 			
@@ -73,7 +74,7 @@
 			});
 			 //当前激活选项
 			var activeTab = subpages[0];
-			var title = document.getElementById("title");
+			//var title = document.getElementById("title");
 			 //选项卡点击事件
 			mui('.mui-bar-tab').on('tap', 'a', function(e) {
 				var targetTab = this.getAttribute('href');
@@ -81,7 +82,7 @@
 					return;
 				}
 				//更换标题
-				title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
+				//title.innerHTML = this.querySelector('.mui-tab-label').innerHTML;
 				//显示目标选项卡
 				if(mui.os.ios||aniShow[targetTab]){
 					plus.webview.show(targetTab);
