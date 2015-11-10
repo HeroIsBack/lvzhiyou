@@ -16,10 +16,15 @@
 				padding: 20px 10px;
 				font-size: 16px;
 			}
-			.mui-search{
+			/*.mui-search{
 				float: left;
 				margin-left: 100px;
 				top: -42px;
+			}*/
+			.mui-icon-list, .mui-icon-search{				
+				float: right;
+				font-size: 2px;
+				/*top: -42px;*/
 			}
 			.type{
 				margin: 10px;
@@ -32,10 +37,10 @@
 			<div id='showCityPicker' style="float: left; margin-right: 5px;">
 				<span id="cityResult3">朝阳区</span><a class="mui-icon mui-icon-arrowdown"></a>
 			</div>
-			
-			<div class="mui-input-row mui-search" style="float: right;">
+			<font size="3"></font><a class="mui-icon mui-icon-search" id="search">搜索</a><a class="mui-icon mui-icon-list" id="clsList">分类&nbsp;&nbsp;&nbsp;&nbsp;</a></font>
+			<!--<div class="mui-input-row mui-search" style="float: right;">
 				<input type="search" class="mui-input-clear" placeholder="">
-			</div>
+			</div>-->
 		</header>
 		
 		<div class="mui-content">
@@ -43,12 +48,12 @@
 				<div id='cityResult3' class="ui-alert"></div>
 			</div>-->
 			
-			<div class="title type">
-				分类不清楚？
-			</div>
+			<!--<div class="title type">
+				<a href="#" id="clsList">分类不清楚</a>
+			</div>-->
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media">
-					<a href="javascript:;">
+					<a href="GoodsList.html">
 						<img class="mui-media-object mui-pull-left" src="../../Assets/images/shuijiao.jpg">
 						<div class="mui-media-body">
 							幸福
@@ -82,7 +87,9 @@
 		<script src="../../Assets/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
 		<script>
 			(function($, doc) {
-				$.init();
+				$.init({
+					swipeBack:true //启用右滑关闭功能
+				});
 				$.ready(function() {
 					//-----------------------------------------
 					//					//级联示例
@@ -102,6 +109,49 @@
 					}, false);
 				});
 			})(mui, document);
+			
+			document.getElementById('search').addEventListener('tap', function() {
+			  //打开关于页面
+			  mui.openWindow({
+			    url: '../Common/Search.html', 
+			    id:'search',
+				show: {
+					aniShow: "pop-in"
+				},
+				waiting: {
+					autoShow: false
+				}
+			  });
+			});
+			document.getElementById('clsList').addEventListener('tap', function() {
+			  //打开关于页面
+			  mui.openWindow({
+			    url: '../Trade/ClassList.html', 
+			    id:'search',
+				show: {
+					aniShow: "pop-in"
+				},
+				waiting: {
+					autoShow: false
+				}
+			  });
+			});
+			
+//			mui('#list').on('tap', 'a', function() {
+//				var id = this.getAttribute('href');
+//				var href = this.href;
+//				var type = this.getAttribute("open-type");
+//				mui.openWindow({
+//					id: id,
+//					url: this.href,
+//					styles: webview_style,
+//					show: {
+//						aniShow: aniShow
+//					},
+//					waiting: {
+//						autoShow: false
+//					}
+//				});
 		</script>
 	</body>
 

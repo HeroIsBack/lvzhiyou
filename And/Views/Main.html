@@ -90,10 +90,10 @@
 					var temp = {};
 					temp[targetTab] = "true";
 					mui.extend(aniShow,temp);
-					plus.webview.show(targetTab,"fade-in",300);
+					plus.webview.show(targetTab,"pop-in",300);
 				}
 				//隐藏当前;
-				plus.webview.hide(activeTab);
+				plus.webview.hide(activeTab,"pop-out",300);
 				//更改当前活跃的选项卡
 				activeTab = targetTab;
 			});
