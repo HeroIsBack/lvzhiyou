@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link href="../../Assets/css/mui.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div id="slider" class="mui-slider mui-fullscreen">
+			<div class="mui-slider-group">
+				<div class="mui-slider-item mui-control-content mui-active">
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div id="divProductList" class="mui-scroll">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell mui-media">
+									<a href="javascript:;">
+										<img class="mui-pull-left" style="height: 100px;max-width: 200px;" src="../../Assets/images/shuijiao.jpg">
+										<div class="mui-media-body">
+											<div class="mui-pull-left">
+												<label>防寒服</label>
+												<br />
+												<label class='mui-ellipsis'>
+													价格 :
+													<label class="mui-content-padded">20</label>元
+												</label>
+												<br />
+												<label class='mui-ellipsis'>
+													介绍 :
+													<label class="mui-content-padded">冬季保暖必备 棉袄</label>
+												</label>
+												<br />
+												<label class='mui-ellipsis'>
+													地区 :
+													<label class="mui-content-padded">天津市</label>
+												</label>
+											</div>
+											<div class="mui-pull-right">
+												<button class="btnChange" onclick="location.href='ProductEdit.html'" type="button">修改</button>
+												<button type="button">下架</button>
+											</div>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../Assets/js/jquery-1.11.3.min.js"></script>
+		<script src="../../Assets/js/mui.min.js"></script>
+		<script src="../../Assets/js/mui.pullToRefresh.js"></script>
+		<script src="../../Assets/js/mui.pullToRefresh.material.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			(function($mui) {
+				//阻尼系数
+				var deceleration = mui.os.ios ? 0.003 : 0.0009;
+				$mui('.mui-scroll-wrapper').scroll({
+					bounce: false,
+					indicators: true, //是否显示滚动条
+					deceleration: deceleration
+				});
+				$mui.ready(function() {
+					//循环初始化所有下拉刷新，上拉加载。
+					$mui('#divProductList').pullToRefresh({
+						down: {
+							callback: function() {
+								pulldownRefresh(this);
+							}
+						},
+						up: {
+							callback: function() {
+								pullupRefresh(this);
+							}
+						}
+					});
+				});
+			})(mui);
+			/**
+			 * 下拉刷新具体业务实现
+			 */
+			function pulldownRefresh(var_this) {
+					setTimeout(function() {
+						var $table = $('.mui-table-view');
+						var $cell = $('.mui-table-view-cell:eq(0)');
+						$table.append($cell.clone());
+						var_this.endPullDownToRefresh(); //refresh completed
+					}, 000);
+				}
+				/**
+				 * 上拉加载具体业务实现
+				 */
+
+			function pullupRefresh(var_this) {
+				setTimeout(function() {
+					var $table = $('.mui-table-view');
+					var $cell = $('.mui-table-view-cell:eq(0)');
+					$table.append($cell.clone());
+					var_this.endPullDownToRefresh(); //refresh completed
+				}, 000);
+			}
+		</script>
+	</body>
+
+</html>

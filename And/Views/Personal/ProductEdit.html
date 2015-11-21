@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title></title>
+		<link href="../../Assets/css/mui.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../Assets/css/app.css" />
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<div class="mui-content-padded" style="margin: 5px;">
+				<form id='login-form' class="mui-input-group">
+					<div class="mui-input-row" style="height: auto;vertical-align: bottom;">
+						<label><img style="width:300px" src="../../Assets/images/cbd.jpg" /></label>
+						<button class="mui-btn-blue" style="position:absolute; bottom:5px;right: 0;">上传</button>
+					</div>
+					<div class="mui-input-row">
+						<label>标题</label>
+						<input id='account' type="text" class="mui-input-clear mui-input" 
+							placeholder="请输入标题">
+					</div>
+					<div class="mui-input-row">
+						<label>价格</label>
+						<input class="mui-numbox-input" type="number" value="" 
+							placeholder="请输入价格">
+					</div>
+					<div class="mui-input-row">
+						<label>发布时间</label>
+						<input id='account' type="datetime" class="mui-input-clear mui-input" 
+							placeholder="请输入发布时间">
+					</div>
+					<div class="mui-input-row">
+						<label>接受询问时间</label>
+						<input id='account' type="time" class="mui-input-clear mui-input" 
+							placeholder="请输入接受询问时间">
+					</div>
+					<div class="mui-input-row">
+						<label>地址</label>
+						<input id='account' type="text" class="mui-input-clear mui-input" 
+							placeholder="请输入地址">
+					</div>
+					<div class="mui-input-row">
+						<label>数量</label>
+						<input class="mui-numbox-input" type="number" value="" 
+							placeholder="请输入数量">
+					</div>
+					<div class="mui-input-row">
+						<label>称呼</label>
+						<input type="text" class="mui-input-clear mui-input"
+							placeholder="请输入称呼">
+					</div>
+					<div class="mui-input-row">
+						<label>联系方式</label>
+						<input type="tel" class="mui-input-clear mui-input"
+							placeholder="请输入联系方式">
+					</div>
+					<div class="mui-input-row" style="margin: 10px 5px;height: 140px;">
+						<label>详细介绍</label>
+						<textarea id="textarea" rows="5" placeholder="请输入详细介绍"></textarea>
+					</div>
+					<div class="mui-input-row" style="text-align: center;">
+						<button class="mui-btn-blue">更新</button>
+						<span style="visibility: hidden;">空白空白</span>
+						<button class="mui-btn-blue">取消</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script src="../../Assets/js/jquery-1.11.3.min.js"></script>
+		<script src="../../Assets/js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+		</script>
+	</body>
+
+</html>
