@@ -8,7 +8,8 @@
 		<link rel="stylesheet" href="../../Assets/css/mui.min.css">
 		<!--App自定义的css-->
 		<!--<link rel="stylesheet" type="text/css" href="../../Assets/css/app.css" />-->
-		<link href="../../Assets/css/mui.picker.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../Assets/css/mui.picker.min.css" />
+		<!--<link href="../../Assets/css/mui.picker.css" rel="stylesheet" />-->
 		<link href="../../Assets/css/mui.poppicker.css" rel="stylesheet" />
 		<style>
 			/*.ui-alert {
@@ -21,10 +22,9 @@
 				margin-left: 100px;
 				top: -42px;
 			}*/
-			.mui-icon-list, .mui-icon-search{				
+			#clsList, #Rental{				
 				float: right;
-				font-size: 2px;
-				/*top: -42px;*/
+				margin-top: 10px;
 			}
 			/*.type{
 				margin: 10px;
@@ -34,10 +34,8 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			<div id='showCityPicker' style="float: left; margin-right: 5px;">
-				<span id="cityResult3">朝阳区</span><a class="mui-icon mui-icon-arrowdown"></a>
-			</div>
-			<font size="3"></font><a class="mui-icon mui-icon-search" id="search">搜索</a><a class="mui-icon mui-icon-list" id="clsList">分类&nbsp;&nbsp;&nbsp;&nbsp;</a></font>
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id="btnBack" href="index.html"></a>
+			<a id="Rental"><font size="3">出租物品</font></a>
 			<!--<div class="mui-input-row mui-search" style="float: right;">
 				<input type="search" class="mui-input-clear" placeholder="">
 			</div>-->
@@ -77,31 +75,64 @@
 				</li>
 			</ul>-->
 			
-			<ul class="mui-table-view mui-grid-view">
+			<ul class="mui-table-view mui-grid-view" style="margin-top: 1px; padding-bottom: 16px;">
 		        <li class="mui-table-view-cell mui-col-xs-4">
-		            <a href="#">
-		                <div class="mui-media-body">位置</div></a></li>
+		            <a href="#"><div class="mui-media-body subClass">位置</div></a></li>
 		        <li class="mui-table-view-cell mui-col-xs-4">
-		            <a href="#">
-		                <div class="mui-media-body">时间</div></a></li>
+		            <a href="#"><div class="mui-media-body subClass" data-options='{"type":"date"}'>时间</div></a></li>
 		        <li class="mui-table-view-cell mui-col-xs-4">
-		            <a href="#">
-		                <div class="mui-media-body">排序</div></a></li>
-		    </ul>    
-			
-			<div id="Gallery" class="mui-slider" style="margin-top:15px;">
+		            <a href="#"><div class="mui-media-body subClass">排序</div></a></li>
+		        <li class="mui-table-view-cell mui-col-xs-4">
+		            <a href="#"><div class="mui-media-body" id="clsList">类别</div></a></li>
+		        <li class="mui-table-view-cell mui-col-xs-4">
+		            <a href="#"><div class="mui-media-body subClass">搜索</div></a></li>
+		    </ul> 
+		    
+		    <div class="mui-card" style="margin-top: 10px;margin-bottom: 10px;">
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell mui-media">
 						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../Assets/images/shuijiao.jpg">
+							<img class="mui-media-object mui-pull-right" src="../../Assets/images/muwu.jpg">
 							<div class="mui-media-body">
-								幸福
-								<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+								骑行镜
+								<p class='mui-ellipsis'>骑行时使用的眼睛，对眼睛起到很好的保护作用。</p>
+							</div>
+						</a>
+					</li>
+					<!--<li class="mui-table-view-cell mui-media">
+						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-right" src="../images/cbd.jpg">
+							<div class="mui-media-body">
+								CBD
+								<p class='mui-ellipsis'>烤炉模式的城，到黄昏，如同打翻的调色盘一般.</p>
 							</div>
 						</a>
 					</li>
 					<li class="mui-table-view-cell mui-media">
 						<a href="javascript:;">
+							<img class="mui-media-object mui-pull-right" src="../images/yuantiao.jpg">
+							<div class="mui-media-body">
+								远眺
+								<p class='mui-ellipsis'>静静的看这个世界，最后终于疯了</p>
+							</div>
+						</a>
+					</li>-->
+				</ul>
+			</div>
+			
+			<div id="Gallery" class="mui-slider" style="margin-top:15px;">
+				<ul class="mui-table-view">
+					<li class="mui-table-view-cell mui-media">
+						<a href="Item.html">
+							<img class="mui-media-object mui-pull-left" src="../../Assets/images/shuijiao.jpg">
+							<div class="mui-media-body">
+								幸福2
+								<p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
+							</div>
+						</a>
+					</li>
+					<li class="mui-table-view-cell mui-media">
+						<a href="test.html">
 							<img class="mui-media-object mui-pull-left" src="../../Assets/images/muwu.jpg">
 							<div class="mui-media-body">
 								木屋
@@ -126,43 +157,22 @@
 		<script src="../../Assets/js/mui.poppicker.js"></script>
 		<script src="../../Assets/js/city.data-3.js" type="text/javascript" charset="utf-8"></script>
 		<script>
-			(function($, doc) {
-				$.init({
-					swipeBack:true //启用右滑关闭功能
-				});
-				$.ready(function() {
-					//-----------------------------------------
-					//					//级联示例
-					var cityPicker3 = new $.PopPicker({
-						layer: 3
-					});
-					cityPicker3.setData(cityData3);
-					var showCityPickerButton = doc.getElementById('showCityPicker');
-					var cityResult3 = doc.getElementById('cityResult3');
-					showCityPickerButton.addEventListener('tap', function(event) {
-						cityPicker3.show(function(items) {
-							//cityResult3.innerText = "你选择的城市是:" + (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
-							cityResult3.innerText = (items[2] || {}).text;
-							//返回 false 可以阻止选择框的关闭
-							//return false;
-						});
-					}, false);
-				});
-			})(mui, document);
+//			document.getElementById('search').addEventListener('tap', function() {
+//			  //打开关于页面
+//			  mui.openWindow({
+//			    url: '../Common/Search.html', 
+//			    id:'search',
+//				show: {
+//					aniShow: "pop-in"
+//				},
+//				waiting: {
+//					autoShow: false
+//				}
+//			  });
+//			});
+
+			mui.init();
 			
-			document.getElementById('search').addEventListener('tap', function() {
-			  //打开关于页面
-			  mui.openWindow({
-			    url: '../Common/Search.html', 
-			    id:'search',
-				show: {
-					aniShow: "pop-in"
-				},
-				waiting: {
-					autoShow: false
-				}
-			  });
-			});
 			document.getElementById('clsList').addEventListener('tap', function() {
 			  //打开关于页面
 			  mui.openWindow({
@@ -175,6 +185,44 @@
 					autoShow: false
 				}
 			  });
+			});
+			
+			var btns = mui('.subClass');
+			btns.each(function(i, btn) {
+				btn.addEventListener('tap', function() {
+					if(i==0){
+						//级联示例
+						var cityPicker = new mui.PopPicker({layer: 3});
+						cityPicker.setData(cityData3);
+						cityPicker.show(function(items) {//alert(this.innerText);
+							btns[i].innerText = (items[2] || {}).text;
+						});
+					}else if(i==1){
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						var picker = new mui.DtPicker(options);
+						picker.show(function(rs) {//alert(btns[i].innerText);
+							btns[i].innerText = rs.text;
+							picker.dispose();
+						});
+					}else if(i==2){
+						var userPicker = new mui.PopPicker();
+						userPicker.setData([{
+							value: "PraiseFirst",
+							text: "好评优先"
+						}, {
+							value: "PriceFirst",
+							text: "价格优先"
+						}]);
+						userPicker.show(function(items) {
+							alert(JSON.stringify(items[0].text));
+							btns[i].innerText = (JSON.stringify(items[0].text)).replace(new RegExp(/(")/g), "");
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});						
+					}
+				}, false);
 			});
 		</script>
 	</body>
